@@ -1,0 +1,98 @@
+.kavia-card {
+  box-sizing: border-box;
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #111827);
+  border-radius: 13px;
+  border: 1.3px solid var(--border-color, #e5e7eb);
+  box-shadow: 0 2px 6px 0 rgba(59,130,246,0.06);
+  transition: box-shadow 0.18s, border-color 0.17s, background 0.17s;
+  margin: 0.45em 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-family: var(--font-family, "Inter", system-ui, sans-serif);
+}
+
+/* Variants */
+.card-default {
+  border: 1.3px solid var(--border-color, #e5e7eb);
+  box-shadow: 0 2px 6px rgba(59,130,246,0.06), 0 1px 1.5px rgba(100,116,139,0.04);
+  background: var(--color-surface, #fff);
+}
+.card-outlined {
+  border: 2px solid var(--color-secondary, #64748b);
+  box-shadow: none;
+  background: var(--color-surface, #fff);
+}
+.card-elevated {
+  border: 1.5px solid var(--border-color, #e5e7eb);
+  box-shadow: 0 3px 18px 0 rgba(59,130,246,0.11), 0 1.8px 6px 0 rgba(100,116,139,.07);
+  background: var(--color-surface, #fff);
+}
+
+/* Interactive/clickable states */
+.card-interactive {
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  box-shadow: 0 2px 6px 0 rgba(59,130,246,0.09), 0 0.8px 2.5px rgba(100,116,139,0.07);
+  transition: box-shadow 0.17s, border-color 0.13s, background 0.13s;
+}
+.card-interactive:hover,
+.card-interactive:focus-visible {
+  box-shadow: 0 8px 32px 0 rgba(59,130,246,0.14), 0 1.8px 7px rgba(59,130,246,0.09);
+  border-color: var(--color-primary, #3b82f6);
+  background: #f3f7ff;
+}
+.card-interactive:active {
+  box-shadow: 0 2.5px 11px 0 rgba(59,130,246,0.19);
+  background: #e3edfc;
+}
+.card-interactive:focus-visible {
+  outline: 2px solid var(--color-primary, #3b82f6);
+  outline-offset: 1.5px;
+}
+
+/* Utility classes for internal layout */
+.card-header {
+  padding: 1.1em 1.35em 0.1em 1.35em;
+  font-weight: 600;
+  color: var(--color-primary, #3b82f6);
+  font-size: 1.18em;
+  letter-spacing: -0.4px;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  background: none;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.card-content {
+  padding: 1.2em 1.35em 1.13em 1.35em;
+  line-height: 1.6;
+  font-size: 1.07em;
+  background: none;
+  flex: 1 1 auto;
+}
+
+.card-footer {
+  padding: 0.84em 1.3em 1.1em 1.3em;
+  color: var(--color-secondary, #64748b);
+  font-size: 1em;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  background: #f9fafb;
+}
+
+/* Responsive utility */
+@media (max-width: 640px) {
+  .kavia-card,
+  .card-header,
+  .card-content,
+  .card-footer {
+    border-radius: 9px;
+    padding-left: 0.88em;
+    padding-right: 0.88em;
+  }
+}

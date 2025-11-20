@@ -8,6 +8,8 @@ import { getStoredTodos, setStoredTodos } from "./services/storage";
 import { api } from "./services/api";
 import { Modal } from "./components/Modal";
 import Accordion from "./components/Accordion";
+import Card from "./components/Card";
+import "./components/Card.css";
 
 // Utility to generate unique ids in-memory
 function uid() {
@@ -170,6 +172,67 @@ export default function App() {
               }
             ]}
           />
+        </div>
+
+        {/* Card Component Demo Section */}
+        <div style={{ margin: "0 auto 24px auto", maxWidth: 520 }}>
+          <Card
+            variant="default"
+            header="Default Card"
+            footer="This is the default card variant."
+            style={{ marginBottom: 16 }}
+          >
+            <div>
+              <strong>Theme colors:</strong> Using primary <span style={{ color: "var(--color-primary)" }}>#3b82f6</span>, secondary <span style={{ color: "var(--color-secondary)" }}>#64748b</span>, surface <span style={{ color: "var(--color-surface)" }}>#fff</span>, background #f9fafb.<br />
+              Flexible sizing, radius, padding. Content area and slots for header and footer.
+            </div>
+          </Card>
+
+          <Card
+            variant="outlined"
+            header="Outlined Card"
+            footer="The outlined variant has a colored border."
+            style={{ marginBottom: 16 }}
+          >
+            For emphasis or separation. Outlined border, no shadow.
+          </Card>
+
+          <Card
+            variant="elevated"
+            header="Elevated (Shadow) Card"
+            footer={
+              <>
+                <span>This card is interactive.</span>
+                <button
+                  style={{
+                    background: "var(--color-primary)",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: 7,
+                    padding: "4px 15px",
+                    marginLeft: 12,
+                    cursor: "pointer",
+                    fontSize: ".99em",
+                    fontWeight: 600,
+                  }}
+                  onClick={() => alert("Elevated Card Button Click!")}
+                  type="button"
+                >
+                  Try Me
+                </button>
+              </>
+            }
+            onClick={() => alert("Elevated card (whole card) was clicked!")}
+            tabIndex={0}
+            style={{ marginBottom: 16, userSelect: "none" }}
+            aria-label="Demo interactive elevated Card"
+          >
+            <div>
+              <strong>Elevated Card</strong> can be clicked (focus ring shown with keyboard). Use for widgets, prompts or{' '}
+              <span style={{ color: "var(--color-primary)" }}>interactive</span> content.
+              <br />Fully accessible! Try keyboard navigation (Tab, Enter, Space).
+            </div>
+          </Card>
         </div>
         <div style={{ textAlign: "center", marginBottom: 18 }}>
           <button
