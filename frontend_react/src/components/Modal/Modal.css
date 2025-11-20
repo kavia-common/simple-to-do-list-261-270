@@ -1,0 +1,153 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.38); /* darkened overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10020;
+  animation: modal-fade-in 0.22s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog {
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #111827);
+  border-radius: 14px;
+  box-shadow: 0 10px 32px 0 rgba(30, 41, 59, 0.16), 0 2px 4px 0 rgba(59, 130, 246, 0.09);
+  outline: none;
+  min-width: 0;
+  padding: 0;
+  max-width: 90vw;
+  width: 100%;
+  animation: modal-scale-in 0.18s cubic-bezier(0.24, 0.95, 0.47, 1.17);
+  transition: box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modal-scale-in {
+  from { transform: scale(0.93); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Sizing */
+.modal-size-sm  { max-width: 360px; }
+.modal-size-md  { max-width: 520px; }
+.modal-size-lg  { max-width: 720px; }
+
+@media (max-width: 540px) {
+  .modal-size-sm,
+  .modal-size-md,
+  .modal-size-lg {
+    max-width: 97vw;
+    margin: 0 2vw;
+  }
+}
+
+/* Modal Structure */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* Header styles */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px 14px 24px;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  background: var(--color-surface, #fff);
+  border-radius: 14px 14px 0 0;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary, #3b82f6);
+  margin-right: 1rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Close (X) button */
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--color-secondary, #64748b);
+  font-size: 1.56rem;
+  line-height: 1;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: 18px;
+  transition: background 0.16s;
+}
+.modal-close-btn:focus,
+.modal-close-btn:hover {
+  background: #f3f4f6;
+  color: var(--color-primary, #3b82f6);
+  outline: none;
+}
+
+/* Body */
+.modal-body {
+  padding: 22px 24px;
+  background: var(--color-surface, #fff);
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: var(--color-text, #111827);
+}
+
+/* Footer */
+.modal-footer {
+  padding: 14px 24px;
+  background: var(--color-background, #f9fafb);
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 0 0 14px 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Theme-appropriate buttons (example: for demo) */
+.modal-footer .btn {
+  background: var(--color-primary, #3b82f6);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 21px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.17s;
+}
+.modal-footer .btn-success {
+  background: var(--color-success, #06b6d4);
+}
+.modal-footer .btn:focus,
+.modal-footer .btn:hover {
+  background: var(--color-success, #06b6d4);
+}
+
+/* For Cancel */
+.modal-footer .btn-cancel {
+  background: #f3f4f6;
+  color: var(--color-secondary, #64748b);
+}
+.modal-footer .btn-cancel:focus,
+.modal-footer .btn-cancel:hover {
+  background: #e5e7eb;
+  color: var(--color-primary, #3b82f6);
+}

@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
 import { getStoredTodos, setStoredTodos } from "./services/storage";
 import { api } from "./services/api";
+import { Modal } from "./components/Modal";
 
 // Utility to generate unique ids in-memory
 function uid() {
@@ -20,6 +21,10 @@ function uid() {
 export default function App() {
   // Each todo: { id, text, completed }
   const [todos, setTodos] = useState([]);
+
+  // Modal demo state
+  const [isModalOpen, setModalOpen] = useState(false);
+
   // Theme is always light per style guide
   useEffect(() => {
     document.body.style.background = "var(--color-background)";
@@ -89,10 +94,74 @@ export default function App() {
               : `${remaining} ${remaining === 1 ? "task" : "tasks"} left`}
           </div>
         </div>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
+          <button
+            className="modal-demo-btn"
+            type="button"
+            style={{
+              background: "var(--color-primary)",
+              color: "#fff",
+              border: "none",
+              borderRadius: 8,
+              fontWeight: 600,
+              padding: "9px 26px",
+              fontSize: "1.07rem",
+              margin: "0 0.5em",
+              boxShadow: "0 1px 3.5px 0 rgba(59,130,246, .08)",
+              cursor: "pointer",
+              transition: "background 0.21s"
+            }}
+            onClick={() => setModalOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={isModalOpen}
+          >
+            Demo Modal
+          </button>
+        </div>
         <TodoInput onAdd={addTodo} />
         <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
         <Footer />
       </main>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Demo Modal"
+        size="md"
+        footer={
+          <>
+            <button
+              className="btn btn-cancel"
+              onClick={() => setModalOpen(false)}
+              type="button"
+              autoFocus
+            >
+              Cancel
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={() => {
+                // Demo confirm action
+                // eslint-disable-next-line no-console
+                console.log("Confirmed from modal!");
+                setModalOpen(false);
+              }}
+              type="button"
+            >
+              Confirm
+            </button>
+          </>
+        }
+      >
+        <div style={{ paddingBottom: 4 }}>
+          This is a fully accessible, theme-styled Modal component.
+          <br />
+          • Press <kbd>ESC</kbd> to close.<br />
+          • Focus is trapped inside.<br />
+          • Overlay click closes (outside dialog).
+        </div>
+      </Modal>
+      {/* Modal root for portal fallback */}
+      <div id="modal-root" style={{ display: "contents" }} />
     </div>
   );
 }
