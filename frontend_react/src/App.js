@@ -10,6 +10,8 @@ import { Modal } from "./components/Modal";
 import Accordion from "./components/Accordion";
 import Card from "./components/Card";
 import "./components/Card.css";
+import Carousel from "./components/Carousel";
+import "./components/Carousel.css";
 
 // Utility to generate unique ids in-memory
 function uid() {
@@ -233,6 +235,66 @@ export default function App() {
               <br />Fully accessible! Try keyboard navigation (Tab, Enter, Space).
             </div>
           </Card>
+        </div>
+        {/* Carousel Component Demo */}
+        <div style={{ margin: "0 auto 24px auto", maxWidth: 520 }}>
+          <Carousel
+            loop
+            autoPlay
+            autoPlayInterval={3300}
+            showIndicators
+            showArrows
+            style={{ marginBottom: 18 }}
+            onSlideChange={() => null}
+            aria-label="Carousel Demo"
+          >
+            <div style={{
+              background: "linear-gradient(90deg,#f9fafb,#e6f0fe)",
+              borderRadius: 11,
+              color: "var(--color-text)",
+              padding: 0,
+              minHeight: 90,
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"
+            }}>
+              <div style={{ fontWeight: 600, fontSize: "1.22em", color: "var(--color-primary)" }}>Welcome to the Carousel!</div>
+              <div style={{ fontSize: ".97em", marginTop: 4, color: "var(--color-secondary)" }}>Accessible, theme-styled, and responsive</div>
+            </div>
+            <div style={{
+              background: "#fff",
+              borderRadius: 11,
+              boxShadow: "0 2px 14px rgba(59,130,246,0.07)",
+              color: "var(--color-primary)",
+              padding: 0,
+              minHeight: 90,
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"
+            }}>
+              <span style={{ fontWeight: 600, fontSize: "1.2em", marginBottom: 4 }}>Swipe, tab or use arrow keys!</span>
+              <span style={{ fontSize: ".98em", color: "var(--color-secondary)", marginTop: 2 }}>Supports keyboard, touch, auto-play, and much more.</span>
+            </div>
+            <div style={{
+              background: "#f5faff",
+              boxShadow: "0 1px 6px rgba(59,130,246,0.05)",
+              borderRadius: 11,
+              color: "var(--color-text)",
+              padding: 0,
+              minHeight: 90,
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"
+            }}>
+              <span style={{ fontSize: "1.12em", color: "var(--color-secondary)", marginBottom: 3 }}>Theme colors: <span style={{ color: "var(--color-primary)" }}>Primary</span>, <span style={{ color: "var(--color-secondary)" }}>Secondary</span></span>
+              <span style={{ fontSize: ".96em" }}>Styled to match <mark style={{ background: "#dbeafe", color: "var(--color-primary)" }}>#3b82f6</mark> and <mark style={{ background: "#f1f5f9", color: "var(--color-secondary)" }}>#64748b</mark></span>
+            </div>
+            <div style={{
+              background: "#e3eafb",
+              borderRadius: 11,
+              color: "#2a3142",
+              padding: 0,
+              minHeight: 90,
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"
+            }}>
+              <span style={{ fontWeight: 600, fontSize: "1.13em" }}>Zero dependencies!</span>
+              <span style={{ fontSize: ".98em", color: "var(--color-primary)", marginTop: 5 }}>Reusable as <code>&lt;Carousel/&gt;</code> anywhere.</span>
+            </div>
+          </Carousel>
         </div>
         <div style={{ textAlign: "center", marginBottom: 18 }}>
           <button

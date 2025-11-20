@@ -1,0 +1,98 @@
+.kavia-carousel-root {
+  position: relative;
+  background: var(--color-surface, #fff);
+  border-radius: 14px;
+  box-shadow: 0 2.5px 12px 0 rgba(59,130,246,0.07);
+  border: 1px solid var(--border-color, #e5e7eb);
+  max-width: 520px;
+  width: 100%;
+  margin: 17px auto;
+  padding: 0;
+  outline: none;
+  overflow: visible;
+}
+
+.kavia-carousel-track {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.kavia-carousel-slide {
+  min-width: 100%;
+  flex: 0 0 100%;
+  background: var(--color-surface, #fff);
+  transition: opacity 0.18s;
+  box-sizing: border-box;
+  padding: 24px 15px 24px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+
+.kavia-carousel-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 5;
+  transform: translateY(-50%);
+}
+
+.kavia-carousel-arrows button {
+  pointer-events: auto;
+}
+
+.kavia-carousel-dots {
+  text-align: center;
+  margin: 19px 0 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+.kavia-carousel-dots button {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background: var(--color-secondary, #64748b);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.44;
+  transition: opacity 0.18s, background 0.18s, box-shadow 0.16s;
+  box-shadow: none;
+}
+.kavia-carousel-dots button[aria-current="true"] {
+  background: var(--color-primary, #3b82f6);
+  opacity: 1;
+  box-shadow: 0 2px 9px 0 rgba(59,130,246,0.13);
+}
+
+/* Hide out-of-bounds arrows if not looping */
+.kavia-carousel-arrows button[disabled] {
+  visibility: hidden;
+  opacity: 0.19;
+}
+
+.kavia-carousel-slide:focus-visible {
+  outline: 2px solid var(--color-primary, #3b82f6);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .kavia-carousel-root {
+    max-width: 98vw;
+    border-radius: 9px;
+  }
+  .kavia-carousel-slide {
+    padding: 15px 4vw 15px 4vw;
+    min-height: 72px;
+  }
+}
