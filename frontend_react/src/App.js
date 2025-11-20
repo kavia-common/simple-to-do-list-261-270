@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { getStoredTodos, setStoredTodos } from "./services/storage";
 import { api } from "./services/api";
 import { Modal } from "./components/Modal";
+import Accordion from "./components/Accordion";
 
 // Utility to generate unique ids in-memory
 function uid() {
@@ -93,6 +94,82 @@ export default function App() {
               ? "Get started by adding a task"
               : `${remaining} ${remaining === 1 ? "task" : "tasks"} left`}
           </div>
+        </div>
+        {/* Accordion Demo Section */}
+        <div
+          style={{
+            margin: "11px auto 27px auto",
+            maxWidth: 520,
+            background: "var(--color-surface)",
+            borderRadius: 13,
+            boxShadow: "0 2px 9px 0 rgba(59,130,246,0.04)",
+            border: "1px solid var(--border-color, #e5e7eb)",
+            padding: "0 0 8px 0",
+          }}
+          aria-label="Accordion Demo"
+        >
+          <Accordion
+            allowMultiple={false}
+            items={[
+              {
+                id: "what",
+                title: "What is the Accordion component?",
+                content: (
+                  <div>
+                    An <strong>Accordion</strong> is a vertically stacked list of panels. Each panel can expand/collapse to reveal content.<br />
+                    This implementation is <span style={{ color: "var(--color-primary)" }}>accessible</span>, keyboard-friendly, with <span style={{ color: "var(--color-success)" }}>theme-consistent</span> design!
+                  </div>
+                ),
+              },
+              {
+                id: "keyboard",
+                title: "How do I use the keyboard?",
+                content: (
+                  <ul style={{ margin: 0, paddingLeft: 22, fontSize: "0.97em", color: "var(--color-secondary)" }}>
+                    <li>
+                      <b>Up/Down Arrow</b>: Focus prev/next header
+                    </li>
+                    <li>
+                      <b>Enter/Space</b>: Open/close section
+                    </li>
+                    <li>
+                      <b>Home/End</b>: Jump to first/last section
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                id: "multi",
+                title: "Multiple expansion supported?",
+                content: (
+                  <>
+                    Yes! Try <b>Multi-Expand Mode</b> below:<br />
+                    <Accordion
+                      allowMultiple
+                      items={[
+                        {
+                          id: "m1",
+                          title: "Section 1",
+                          content: "You can open this and another.",
+                        },
+                        {
+                          id: "m2",
+                          title: "Section 2",
+                          content: <span>Open more than one at once.<br />All accessible!</span>,
+                        },
+                        {
+                          id: "m3",
+                          title: "Section 3",
+                          content: "You may open/close any combination.",
+                        }
+                      ]}
+                      style={{ margin: "10px 0 0 0", border: "none", boxShadow: "none", background: "transparent" }}
+                    />
+                  </>
+                ),
+              }
+            ]}
+          />
         </div>
         <div style={{ textAlign: "center", marginBottom: 18 }}>
           <button

@@ -1,0 +1,98 @@
+.kavia-accordion-root {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--color-surface, #fff);
+  border-radius: 13px;
+  box-shadow: 0 2px 9px 0 rgba(59,130,246,0.06);
+  border: 1px solid var(--border-color, #e5e7eb);
+  font-family: var(--font-family, "Inter", system-ui, sans-serif);
+  padding: 0 0 6px 0;
+}
+
+.kavia-accordion-item {
+  background: var(--color-surface, #fff);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  transition: background 0.19s;
+}
+.kavia-accordion-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 13px 13px;
+}
+.kavia-accordion-item.expanded {
+  background: #f3f8ff;
+}
+.kavia-accordion-item.disabled {
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.kavia-accordion-header {
+  background: none;
+  outline: none;
+  border: none;
+  margin: 0;
+}
+
+.kavia-accordion-trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 1.09rem;
+  font-weight: 600;
+  background: none;
+  color: var(--color-primary, #3b82f6);
+  padding: 14px 22px;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.19s, color 0.16s;
+  border-radius: 0;
+  gap: 10px;
+  outline: none;
+}
+.kavia-accordion-trigger:focus,
+.kavia-accordion-trigger:hover {
+  background: var(--color-primary, #3b82f6);
+  color: #fff;
+}
+.kavia-accordion-trigger:active {
+  background: #e0ecfe;
+}
+
+.kavia-accordion-title {
+  flex: 1 1 auto;
+}
+
+.kavia-accordion-chevron {
+  display: inline-block;
+  font-size: 1.1em;
+  color: var(--color-secondary, #64748b);
+  transition: transform 0.22s cubic-bezier(0.8,0,0.24,1), color 0.13s;
+}
+
+/* Panel animation for expand/collapse */
+.kavia-accordion-panel {
+  background: var(--color-surface, #fff);
+  transition: max-height 0.32s cubic-bezier(0.77,0,0.18,1), opacity 0.19s linear;
+  will-change: max-height, opacity;
+  box-sizing: border-box;
+}
+.kavia-accordion-panel-inner {
+  padding: 14px 25px 13px 25px;
+  color: var(--color-text, #111827);
+  font-size: 1.01rem;
+  line-height: 1.6;
+  background: none;
+}
+@media (max-width: 600px) {
+  .kavia-accordion-root {
+    max-width: 98vw;
+    border-radius: 9px;
+  }
+  .kavia-accordion-panel-inner,
+  .kavia-accordion-trigger {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+}
