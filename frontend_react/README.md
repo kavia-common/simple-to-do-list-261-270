@@ -2,6 +2,36 @@
 
 This project provides a minimal React template with a clean, modern UI and minimal dependencies.
 
+---
+
+# Simple To-Do App
+
+A sleek, single-column todo app using React and hooks.  
+- **Add, complete, delete, and view** tasks.
+- **Local-first**: Tasks persist in your browser with `localStorage` by default.
+- **No backend is required**: If a backend API URL is detected via `REACT_APP_API_BASE` or `REACT_APP_BACKEND_URL`, the code is ready to use an API.
+- **Style Guide**: Theme colors from the spec (primary: #3b82f6, success: #06b6d4, error: #EF4444, text: #111827, background: #f9fafb, surface: #fff).
+- **Accessible**: Keyboard navigation (Enter to add, Space/Enter for completion).
+- **Modern UI**: Centered, responsive, clean.
+
+### Usage & Env vars
+
+- To run locally:  
+  ```bash
+  npm start
+  ```
+  Open [http://localhost:3000](http://localhost:3000)
+
+- **Persistence**  
+  - Default: Uses browser localStorage.
+  - You may set `REACT_APP_API_BASE` or `REACT_APP_BACKEND_URL` in your `.env` to prepare for backend syncing (not required).
+
+### File structure
+- Components: `src/components`
+- Services (storage/api): `src/services`
+- Theme CSS: `src/theme.css`
+
+
 ## Features
 
 - **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
