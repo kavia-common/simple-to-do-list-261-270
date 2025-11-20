@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "./theme.css";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import Footer from "./components/Footer";
@@ -69,11 +69,30 @@ export default function App() {
   const remaining = todos.filter((t) => !t.completed).length;
 
   return (
-    <div className="todo-app-container" role="main" aria-label="Todo List Application">
-      <Header total={todos.length} remaining={remaining} />
-      <TodoInput onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
-      <Footer />
+    <div style={{ minHeight: "100vh", background: "var(--color-background)" }}>
+      <Navbar />
+      <main
+        className="todo-app-container"
+        role="main"
+        aria-label="Todo List Application"
+        style={{ marginTop: 24 }} // Room under navbar
+      >
+        {/* Remove Header (title/count) to not duplicate with Navbar */}
+        {/* <Header total={todos.length} remaining={remaining} /> */}
+        <div style={{ textAlign: "center", marginTop: "1.7em", marginBottom: "0.7em" }}>
+          <div className="todo-title" style={{ color: "var(--color-primary)", fontSize: "2rem", fontWeight: "bold", marginBottom: 6 }}>
+            Simple To-Do List
+          </div>
+          <div className="todo-count" style={{ fontSize: "1rem", color: "var(--color-secondary)", margin: 0 }}>
+            {todos.length === 0
+              ? "Get started by adding a task"
+              : `${remaining} ${remaining === 1 ? "task" : "tasks"} left`}
+          </div>
+        </div>
+        <TodoInput onAdd={addTodo} />
+        <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+        <Footer />
+      </main>
     </div>
   );
 }
